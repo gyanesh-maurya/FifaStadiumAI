@@ -31,7 +31,7 @@ describe('Chat API Route', () => {
     { input: 'Translate to hindi', expectedMatch: 'Multilingual Assistance' },
     { input: 'Where is parking?', expectedMatch: 'Transportation' },
     { input: 'Where can I recycle?', expectedMatch: 'Sustainability' },
-    { input: 'Hello!', expectedMatch: 'That\\'s a great question!' },
+    { input: 'Hello!', expectedMatch: "That's a great question!" },
   ];
 
   for (const { input, expectedMatch } of testCases) {
