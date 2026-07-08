@@ -17,12 +17,12 @@ if (typeof window !== 'undefined') {
 
   if (!window.PointerEvent) {
     class PointerEvent extends Event {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      constructor(type: string, props: any) {
+      constructor(type: string, props: Record<string, unknown>) {
         super(type, props);
       }
     }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).PointerEvent = PointerEvent;
+    Object.defineProperty(window, 'PointerEvent', {
+      value: PointerEvent,
+    });
   }
 }

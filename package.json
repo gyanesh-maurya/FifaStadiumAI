@@ -1,6 +1,9 @@
 {
   "name": "h2s",
   "version": "0.1.0",
+  "description": "GenAI-enabled solution that enhances stadium operations and the overall tournament experience for fans, organizers, volunteers, or venue staff.",
+  "author": "Gyanesh Maurya",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",

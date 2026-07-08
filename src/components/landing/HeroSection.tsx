@@ -10,33 +10,8 @@ export function HeroSection() {
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background pt-16">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-background to-background z-0" />
       
-      {/* Animated abstract shapes behind */}
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[128px] -z-10"
-      />
-      
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-        className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[128px] -z-10"
-      />
+      <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[128px] -z-10" />
+      <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[128px] -z-10" />
 
       <div className="container px-4 md:px-6 mx-auto relative z-10 flex flex-col items-center text-center">
         <motion.div
@@ -68,7 +43,7 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl"
         >
-          Experience the World Cup like never before with solutions for <strong>Navigation, Crowd Management, Accessibility, Transportation, Sustainability, Multilingual Assistance, Real-time Decision Making,</strong> and <strong>Operational Intelligence</strong>.
+          A GenAI-enabled solution that enhances stadium operations and the overall tournament experience for <strong>fans, organizers, volunteers, or venue staff</strong>. Our solution leverages Generative AI to improve Navigation, Crowd Management, Accessibility, Transportation, Sustainability, Multilingual Assistance, Operational Intelligence, and Real-time Decision Support.
         </motion.p>
 
         <motion.div

@@ -3,7 +3,10 @@
 import dynamic from "next/dynamic";
 import { toast } from "sonner";
 
-const StadiumMap = dynamic(() => import("@/components/map/StadiumMap"), { ssr: false });
+const StadiumMap = dynamic(() => import("@/components/map/StadiumMap"), {
+  ssr: false,
+  loading: () => <div className="w-full h-[400px] flex items-center justify-center bg-muted/20 animate-pulse rounded-2xl"><div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div></div>
+});
 
 import { 
   MapPin, 

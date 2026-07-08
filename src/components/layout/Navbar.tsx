@@ -27,7 +27,7 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group" aria-label="StadiumAI Home">
           <motion.div
             whileHover={{ rotate: 180 }}
             transition={{ duration: 0.5 }}
@@ -71,6 +71,7 @@ export function Navbar() {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -82,6 +83,7 @@ export function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
+          id="mobile-menu"
           className="md:hidden absolute top-16 left-0 w-full bg-background border-b shadow-lg py-4 px-4 flex flex-col gap-4"
         >
           <Link href="#features" className="text-muted-foreground hover:text-primary px-2 py-1" onClick={() => setIsMobileMenuOpen(false)}>

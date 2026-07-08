@@ -131,7 +131,9 @@ export function StadiumAIWidget() {
                   <Button type="button" variant="ghost" size="icon" className="shrink-0 rounded-full text-muted-foreground hover:text-primary" aria-label="Use voice input">
                     <Mic className="h-5 w-5" />
                   </Button>
+                  <label htmlFor="chat-input" className="sr-only">Message StadiumAI</label>
                   <Input
+                    id="chat-input"
                     value={input}
                     onChange={handleInputChange}
                     placeholder="Ask StadiumAI anything..."

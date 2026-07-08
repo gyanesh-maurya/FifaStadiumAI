@@ -1,23 +1,24 @@
+/** @jest-environment node */
 import { POST } from '../app/api/chat/route';
 import { NextRequest } from 'next/server';
 
 describe('Chat API Route', () => {
   it('returns 400 for invalid payloads', async () => {
-    const req = new Request('http://localhost/api/chat', {
-      method: 'POST',
-      body: JSON.stringify({}),
-    });
+    const req = {
+      headers: new Map(),
+      json: async () => ({}),
+    } as unknown as Request;
     const res = await POST(req);
     expect(res.status).toBe(400);
   });
 
   it('returns 400 for excessively long messages', async () => {
-    const req = new Request('http://localhost/api/chat', {
-      method: 'POST',
-      body: JSON.stringify({
+    const req = {
+      headers: new Map(),
+      json: async () => ({
         messages: [{ content: 'a'.repeat(600) }],
       }),
-    });
+    } as unknown as Request;
     const res = await POST(req);
     expect(res.status).toBe(400);
   });
@@ -36,12 +37,12 @@ describe('Chat API Route', () => {
 
   for (const { input, expectedMatch } of testCases) {
     it(`handles input: ${input}`, async () => {
-      const req = new Request('http://localhost/api/chat', {
-        method: 'POST',
-        body: JSON.stringify({
+      const req = {
+        headers: new Map(),
+        json: async () => ({
           messages: [{ content: input }],
         }),
-      });
+      } as unknown as Request;
 
       const res = await POST(req);
       expect(res.status).toBe(200);
