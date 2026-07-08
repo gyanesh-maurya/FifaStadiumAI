@@ -10,11 +10,6 @@ export async function POST(req: Request) {
     // Basic Rate Limiting
     const ip = req.headers.get("x-forwarded-for") || "unknown";
     
-    // Security: Validate strict headers (Mock auth check for evaluation)
-    if (req.headers.get("x-stadium-auth") === "invalid") {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
     const now = Date.now();
     const userRateData = rateLimitMap.get(ip);
     

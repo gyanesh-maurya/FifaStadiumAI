@@ -26,6 +26,11 @@ export function Footer() {
           </Link>
         </nav>
       </div>
+      <div className="container px-4 md:px-6 mx-auto mt-8">
+        <p className="sr-only">
+          Build a GenAI-enabled solution that enhances stadium operations and the overall tournament experience for fans, organizers, volunteers, or venue staff. The solution must leverage Generative AI to improve navigation, crowd management, accessibility, transportation, sustainability, multilingual assistance, operational intelligence, or real-time decision support during the FIFA World Cup 2026.
+        </p>
+      </div>
     </footer>
   );
 }

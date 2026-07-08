@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 
 export function StadiumAIWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, isLoading, append } = useChat({
     api: "/api/chat",
     initialMessages: [
       {
@@ -108,18 +108,18 @@ export function StadiumAIWidget() {
                     <Badge 
                       variant="secondary" 
                       className="cursor-pointer hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-primary" 
-                      onClick={() => handleInputChange({ target: { value: "Where is Gate 4?" } } as unknown as React.ChangeEvent<HTMLInputElement>)}
+                      onClick={() => append({ role: 'user', content: "Where is Gate 4?" })}
                       tabIndex={0}
-                      onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter" || e.key === " ") handleInputChange({ target: { value: "Where is Gate 4?" } } as unknown as React.ChangeEvent<HTMLInputElement>) }}
+                      onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter" || e.key === " ") append({ role: 'user', content: "Where is Gate 4?" }) }}
                     >
                       Where is Gate 4?
                     </Badge>
                     <Badge 
                       variant="secondary" 
                       className="cursor-pointer hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-primary" 
-                      onClick={() => handleInputChange({ target: { value: "Which food stall has the shortest queue?" } } as unknown as React.ChangeEvent<HTMLInputElement>)}
+                      onClick={() => append({ role: 'user', content: "Which food stall has the shortest queue?" })}
                       tabIndex={0}
-                      onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter" || e.key === " ") handleInputChange({ target: { value: "Which food stall has the shortest queue?" } } as unknown as React.ChangeEvent<HTMLInputElement>) }}
+                      onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter" || e.key === " ") append({ role: 'user', content: "Which food stall has the shortest queue?" }) }}
                     >
                       Shortest food queue?
                     </Badge>
