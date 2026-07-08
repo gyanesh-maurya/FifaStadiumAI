@@ -56,12 +56,12 @@ export function StadiumAIWidget() {
                     </p>
                   </div>
                 </div>
-                <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} className="rounded-full hover:bg-background/50">
+                <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} className="rounded-full hover:bg-background/50" aria-label="Close AI chat">
                   <X className="h-5 w-5" />
                 </Button>
               </div>
 
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
+              <div className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar" aria-live="polite">
                 {messages.map((m) => (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -112,7 +112,7 @@ export function StadiumAIWidget() {
 
               <div className="p-3 border-t bg-background/50">
                 <form onSubmit={handleSubmit} className="flex gap-2">
-                  <Button type="button" variant="ghost" size="icon" className="shrink-0 rounded-full text-muted-foreground hover:text-primary">
+                  <Button type="button" variant="ghost" size="icon" className="shrink-0 rounded-full text-muted-foreground hover:text-primary" aria-label="Use voice input">
                     <Mic className="h-5 w-5" />
                   </Button>
                   <Input
@@ -121,7 +121,7 @@ export function StadiumAIWidget() {
                     placeholder="Ask StadiumAI anything..."
                     className="flex-1 bg-background border-primary/20 focus-visible:ring-primary/30 rounded-full px-4"
                   />
-                  <Button type="submit" disabled={isLoading || !input.trim()} size="icon" className="shrink-0 rounded-full shadow-md">
+                  <Button type="submit" disabled={isLoading || !input.trim()} size="icon" className="shrink-0 rounded-full shadow-md" aria-label="Send message">
                     <Send className="h-4 w-4" />
                   </Button>
                 </form>
@@ -140,6 +140,8 @@ export function StadiumAIWidget() {
             ? "bg-secondary text-secondary-foreground border-transparent" 
             : "bg-primary text-primary-foreground border-primary/50 shadow-primary/30"
         }`}
+        aria-label={isOpen ? "Close AI Copilot" : "Open AI Copilot"}
+        aria-expanded={isOpen}
       >
         {isOpen ? <X className="h-6 w-6" /> : <Sparkles className="h-6 w-6" />}
       </motion.button>

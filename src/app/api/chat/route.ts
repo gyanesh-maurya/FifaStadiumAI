@@ -2,8 +2,19 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
-    const { messages } = await req.json();
+    const body = await req.json();
+    
+    // Security: Input validation to prevent giant payloads
+    if (!body || !Array.isArray(body.messages) || body.messages.length === 0) {
+      return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
+    }
+    
+    const messages = body.messages;
     const lastMessage = messages[messages.length - 1].content;
+    
+    if (typeof lastMessage !== "string" || lastMessage.length > 500) {
+       return NextResponse.json({ error: "Message too long or invalid" }, { status: 400 });
+    }
     
     // For the hackathon, we simulate an AI response if no real API key is present.
     // In a real scenario, you'd use `streamText` from 'ai' and '@ai-sdk/openai'.
@@ -13,19 +24,21 @@ export async function POST(req: Request) {
     const lowerMsg = lastMessage.toLowerCase();
     
     if (lowerMsg.includes("gate 4")) {
-      mockResponse = "Gate 4 is located on the North side of the stadium. It's a 3-minute walk from your current location. Would you like walking directions on the map?";
+      mockResponse = "Gate 4 is located on the North side. [Crowd Management] I am routing you via Concourse B to avoid the current congestion near Gate 3.";
     } else if (lowerMsg.includes("food") || lowerMsg.includes("queue")) {
-      mockResponse = "The 'Burger & Fries' stall near Section 112 has the shortest queue right now (approx. 2 min wait). The 'Taco Stand' at Section 105 has a 10 min wait.";
+      mockResponse = "The 'Burger & Fries' stall has a 2 min wait. [Operational Intelligence] By redirecting fans to underutilized stalls, we reduce overall wait times by 40%.";
     } else if (lowerMsg.includes("seat") && lowerMsg.includes("b12")) {
-      mockResponse = "Your seat B12 in Row 15 is in the VIP fan zone. Proceed to Level 2 via Elevator 3. Enjoy the match!";
-    } else if (lowerMsg.includes("blind") || lowerMsg.includes("visually impaired")) {
-      mockResponse = "I have activated the Accessibility Copilot. I will read directions out loud and route you via tactile pathways. A volunteer has also been notified to assist you at Gate 1.";
+      mockResponse = "Your seat B12 is on Level 2. [Real-time Decision Making] Taking Elevator 3 is currently 5 minutes faster than the main stairs.";
+    } else if (lowerMsg.includes("blind") || lowerMsg.includes("accessibility")) {
+      mockResponse = "[Accessibility Copilot] I have generated a wheelchair-friendly and tactile route. A volunteer has been dispatched to assist you.";
     } else if (lowerMsg.includes("emergency") || lowerMsg.includes("sos")) {
-      mockResponse = "[EMERGENCY MODE ACTIVATED] Security and medical teams have been dispatched to your location. Please stay calm. The nearest medical station is 50 meters to your left.";
-    } else if (lowerMsg.includes("hindi")) {
-      mockResponse = "नमस्ते! मैं स्टेडियम एआई हूं। मैं आपकी कैसे मदद कर सकता हूं?";
-    } else if (lowerMsg.includes("parking")) {
-      mockResponse = "Parking Lot B currently has 45 available spaces. Traffic is light. Estimated time to park: 5 minutes.";
+      mockResponse = "[EMERGENCY MODE] Security and medical teams dispatched. [Crowd Management] Safe evacuation routes are being highlighted on your map.";
+    } else if (lowerMsg.includes("hindi") || lowerMsg.includes("translate")) {
+      mockResponse = "[Multilingual Assistance] नमस्ते! मैं स्टेडियम एआई हूं। मैं आपकी कैसे मदद कर सकता हूं? (Hello! I am StadiumAI. How can I assist you?)";
+    } else if (lowerMsg.includes("parking") || lowerMsg.includes("transport")) {
+      mockResponse = "[Transportation] Metro line 4 is arriving in 5 minutes. Parking Lot B has 45 spaces. Use public transit to help us meet our [Sustainability] goals!";
+    } else if (lowerMsg.includes("sustainability") || lowerMsg.includes("recycle")) {
+      mockResponse = "[Sustainability] Please use the blue recycling bins near Section 112. Last match, AI routing helped recycle 85% of stadium waste!";
     } else {
       mockResponse = "That's a great question! As your Stadium Copilot, I can help you with navigation, food recommendations, accessible routes, and live match updates. What do you need help with right now?";
     }
