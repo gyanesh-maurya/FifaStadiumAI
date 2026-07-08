@@ -105,8 +105,24 @@ export function StadiumAIWidget() {
               {/* Suggestions */}
               {messages.length === 1 && (
                  <div className="px-4 pb-2 flex flex-wrap gap-2">
-                    <Badge variant="secondary" className="cursor-pointer hover:bg-primary/20" onClick={() => handleInputChange({ target: { value: "Where is Gate 4?" } } as unknown as React.ChangeEvent<HTMLInputElement>)}>Where is Gate 4?</Badge>
-                    <Badge variant="secondary" className="cursor-pointer hover:bg-primary/20" onClick={() => handleInputChange({ target: { value: "Which food stall has the shortest queue?" } } as unknown as React.ChangeEvent<HTMLInputElement>)}>Shortest food queue?</Badge>
+                    <Badge 
+                      variant="secondary" 
+                      className="cursor-pointer hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-primary" 
+                      onClick={() => handleInputChange({ target: { value: "Where is Gate 4?" } } as unknown as React.ChangeEvent<HTMLInputElement>)}
+                      tabIndex={0}
+                      onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter" || e.key === " ") handleInputChange({ target: { value: "Where is Gate 4?" } } as unknown as React.ChangeEvent<HTMLInputElement>) }}
+                    >
+                      Where is Gate 4?
+                    </Badge>
+                    <Badge 
+                      variant="secondary" 
+                      className="cursor-pointer hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-primary" 
+                      onClick={() => handleInputChange({ target: { value: "Which food stall has the shortest queue?" } } as unknown as React.ChangeEvent<HTMLInputElement>)}
+                      tabIndex={0}
+                      onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter" || e.key === " ") handleInputChange({ target: { value: "Which food stall has the shortest queue?" } } as unknown as React.ChangeEvent<HTMLInputElement>) }}
+                    >
+                      Shortest food queue?
+                    </Badge>
                  </div>
               )}
 

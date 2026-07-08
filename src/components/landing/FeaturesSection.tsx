@@ -17,16 +17,16 @@ import {
 } from "lucide-react";
 
 const features = [
-  { icon: Navigation, title: "AI Navigation", desc: "Natural language navigation to seats, gates, and washrooms." },
-  { icon: Users, title: "Crowd Intelligence", desc: "Live congestion heatmaps and AI predicted crowd movement." },
-  { icon: Languages, title: "Multilingual Assistant", desc: "Instant voice and text translation in 8+ global languages." },
-  { icon: Brain, title: "Accessibility Copilot", desc: "Wheelchair routes, large fonts, and blind assistance guidance." },
-  { icon: Car, title: "Transportation AI", desc: "Parking predictions, metro guidance, and live ETAs." },
-  { icon: ShieldAlert, title: "Emergency AI", desc: "Automated incident reports and optimal evacuation routes." },
-  { icon: ClipboardList, title: "Volunteer Copilot", desc: "AI-generated task instructions and priority shift assignments." },
+  { icon: Navigation, title: "Navigation", desc: "Natural language navigation to seats, gates, and washrooms." },
+  { icon: Users, title: "Crowd Management", desc: "Live congestion heatmaps and AI predicted crowd movement." },
+  { icon: Languages, title: "Multilingual Assistance", desc: "Instant voice and text translation in 8+ global languages." },
+  { icon: Brain, title: "Accessibility", desc: "Wheelchair routes, large fonts, and blind assistance guidance." },
+  { icon: Car, title: "Transportation", desc: "Parking predictions, metro guidance, and live ETAs." },
+  { icon: ShieldAlert, title: "Real-time Decision Making", desc: "Automated incident reports and optimal evacuation routes." },
+  { icon: ClipboardList, title: "Operational Intelligence", desc: "AI-generated task instructions and priority shift assignments." },
   { icon: PieChart, title: "Organizer Dashboard", desc: "Real-time analytics and predictive resource allocation." },
   { icon: Utensils, title: "Food Recommendations", desc: "Shortest queue predictions and dietary preference matching." },
-  { icon: Leaf, title: "Sustainability Assistant", desc: "Carbon footprint tracking and waste management guidance." },
+  { icon: Leaf, title: "Sustainability", desc: "Carbon footprint tracking and waste management guidance." },
   { icon: Clock, title: "Match Day Timeline", desc: "Personalized event countdowns and contextual seat reminders." },
   { icon: Brain, title: "Personal AI", desc: "Remembers your preferences, favorite team, and accessibility needs." }
 ];

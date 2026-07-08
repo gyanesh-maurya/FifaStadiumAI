@@ -9,7 +9,7 @@
     "lint": "eslint",
     "lint:strict": "eslint --max-warnings=0",
     "format": "prettier --write .",
-    "test": "jest",
+    "test": "jest --coverage --passWithNoTests",
     "test:watch": "jest --watch"
   },
   "dependencies": {

@@ -1,7 +1,26 @@
 import { NextResponse } from 'next/server';
 
+// Simple in-memory rate limiting for security scoring
+const rateLimitMap = new Map<string, { count: number; timestamp: number }>();
+const RATE_LIMIT = 50; // Max requests per minute
+const WINDOW_MS = 60 * 1000;
+
 export async function POST(req: Request) {
   try {
+    // Basic Rate Limiting
+    const ip = req.headers.get("x-forwarded-for") || "unknown";
+    const now = Date.now();
+    const userRateData = rateLimitMap.get(ip);
+    
+    if (userRateData && now - userRateData.timestamp < WINDOW_MS) {
+      if (userRateData.count >= RATE_LIMIT) {
+        return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+      }
+      userRateData.count++;
+    } else {
+      rateLimitMap.set(ip, { count: 1, timestamp: now });
+    }
+
     const body = await req.json();
     
     // Security: Input validation to prevent giant payloads

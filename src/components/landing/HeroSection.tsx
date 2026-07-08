@@ -68,7 +68,7 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl"
         >
-          Experience the World Cup like never before. AI-powered navigation, real-time crowd intelligence, and multi-lingual assistance for fans, staff, and security.
+          Experience the World Cup like never before with solutions for <strong>Navigation, Crowd Management, Accessibility, Transportation, Sustainability, Multilingual Assistance, Real-time Decision Making,</strong> and <strong>Operational Intelligence</strong>.
         </motion.p>
 
         <motion.div
